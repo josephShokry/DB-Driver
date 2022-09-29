@@ -1,5 +1,6 @@
 
 *.xml
+!pom.xml
 *.iml
 *.jar
 target*
