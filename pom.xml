@@ -22,12 +22,12 @@
             <version>31.1-jre</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/dependency-maven-plugin -->
-        <dependency>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>dependency-maven-plugin</artifactId>
-            <version>1.0</version>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.codehaus.mojo/dependency-maven-plugin &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.codehaus.mojo</groupId>-->
+<!--            <artifactId>dependency-maven-plugin</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <properties>
