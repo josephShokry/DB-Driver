@@ -1,7 +1,10 @@
 package exceptions;
 
-public class TableNotExist extends Exception{
-    TableNotExist(String message){
+/**
+ * this exception will be thrown if the user trying to use a nonexistent table
+ */
+public class TableNotExist extends RuntimeException {
+    TableNotExist(String message) {
         super(message);
     }
 }

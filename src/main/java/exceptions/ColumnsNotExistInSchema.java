@@ -1,7 +1,10 @@
 package exceptions;
 
-public class ColumnsNotExistInSchema extends Exception {
-    ColumnsNotExistInSchema(String message){
+/**
+ * this exception will be thrown if value has column not in schema of database is being tried to be set in the DB
+ */
+public class ColumnsNotExistInSchema extends RuntimeException {
+    ColumnsNotExistInSchema(String message) {
         super(message);
     }
 }

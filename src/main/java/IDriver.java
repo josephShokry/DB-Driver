@@ -27,19 +27,4 @@ public interface IDriver {
      */
     void delete (String databaseName, String jsonQuery);
 
-    // here we will get the output from the python then pass it to java output function
-    // it will take it and check the status
-    //      if any exception will call exceptionRaiser and give it the message and exception name
-    //      or success and get function return the result
-    //      print the message
-    //private method
-    void output (String jsonResult);
-
-    // will take the exceptionName and throw the proper exception and pass to it the message
-    //private method
-    void exceptionRaiser (String exceptionName, String exceptionMessage);
-
-    // will take the result of get and print it to the console or website later
-    //private method
-    String result (String result);
 }
