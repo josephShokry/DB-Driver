@@ -8,11 +8,9 @@ import static org.mockito.Mockito.*;
 
 class operationsTest {
 
-    Execute mockedExecute = mock(Execute.class);
-
-
     @Test
     void creatTest() throws JSONException, IOException {
+        Execute mockedExecute = mock(Execute.class);
         String schemaPath = "C:\\Users\\lenovo\\Desktop\\check_in_system\\DB\\SimpleFSDB\\tests\\testcases_schemas\\schema.txt";
         String command = Paths.get("source","main.py") + " -cmd create -sch " + schemaPath;
         when(mockedExecute.execute(command)).thenReturn(
@@ -26,6 +24,7 @@ class operationsTest {
     }
     @Test
     void notGivingSchema() throws JSONException, IOException {//not giving the schema or the schema file is not proper
+        Execute mockedExecute = mock(Execute.class);
         String schemaPath = "C:\\Users\\lenovo\\Desktop\\check_in_system\\DB\\SimpleFSDB\\tests\\testcases_schemas\\ssssschema.txt";
         String command = Paths.get("source","main.py") + " -cmd create -sch " + schemaPath;
         when(mockedExecute.execute(command)).thenReturn(
