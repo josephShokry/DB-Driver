@@ -20,4 +20,4 @@ jobs:
 #        run: mvn --batch-mode --update-snapshots package
 
       - name: run testcases
-        run : mvn test
+        run : mvn install
