@@ -1,15 +1,18 @@
 import org.json.*;
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class Execute {
     private String databasePath;
     private String pythonCaller;
     public Execute() throws IOException {
-        loadConfg("C:\\Users\\lenovo\\Desktop\\DB-driver\\DB-Driver\\src\\main\\java\\configurations.properties");
+        Path filePath = Paths.get(Paths.get(System.getProperty("user.dir")).toString(), "src", "main", "java", "configurations.properties");
+        loadConfg(filePath.toString());
     }
-    private void loadConfg(String confgFilePaht) throws IOException {
-        FileReader confgFile = new FileReader(confgFilePaht);
+    private void loadConfg(String confgFilePath) throws IOException {
+        FileReader confgFile = new FileReader(confgFilePath);
         Properties confg = new Properties();
         confg.load(confgFile);
         databasePath = confg.getProperty("databasePath");
