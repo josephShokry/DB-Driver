@@ -17,20 +17,21 @@ class operationsTest {
         String command = Paths.get("source","main.py") + " -cmd create -sch " + schemaPath;
         when(mockedExecute.execute(command)).thenReturn(
                 new JSONObject("{'result': 'None', 'message': 'the command has been executed successfully!', 'status': 'Success'}"));
-//        try{
+        try{
             new Driver().createDatabase(schemaPath);
-//        }
-//        catch (Exception e){
-//            fail("the command raised error");
-//        }
+        }
+        catch (Exception e){
+            fail("the command raised error");
+        }
     }
     @Test
     void notGivingSchema() throws JSONException, IOException {//not giving the schema or the schema file is not proper
         String schemaPath = "C:\\Users\\lenovo\\Desktop\\check_in_system\\DB\\SimpleFSDB\\tests\\testcases_schemas\\ssssschema.txt";
-        when(mockedExecute.execute(Paths.get("source","main.py") + " -cmd create -sch " + schemaPath)).thenReturn(
+        String command = Paths.get("source","main.py") + " -cmd create -sch " + schemaPath;
+        when(mockedExecute.execute(command)).thenReturn(
                 new JSONObject("{'result': 'None', 'message': 'the schema path is not valid', 'status': 'FileNotFound'}"));
         try{
-            new Driver().createDatabase("C:\\Users\\lenovo\\Desktop\\check_in_system\\DB\\SimpleFSDB\\tests\\testcases_schemas\\ssssschema.txt");
+            new Driver().createDatabase(schemaPath);
         }
         catch (Exception e){
             if(!(e instanceof FileNotFound)){
