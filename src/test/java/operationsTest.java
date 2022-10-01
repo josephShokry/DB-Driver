@@ -21,7 +21,7 @@ class operationsTest {
             new Driver().createDatabase(schemaPath);
         }
         catch (Exception e){
-            fail("the command raised error");
+            fail(e.getMessage());
         }
     }
     @Test
