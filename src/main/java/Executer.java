@@ -1,15 +1,23 @@
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-public class Execute {
+public class Executer {
     private String databasePath;
     private String pythonCaller;
-    public Execute() throws IOException {
+    private static Executer executerObject = null;
+    private Executer() throws IOException {
         Path filePath = Paths.get(Paths.get(System.getProperty("user.dir")).toString(), "src", "main", "java", "configurations.properties");
         loadConfg(filePath.toString());
+    }
+    public static Executer getInstance() throws IOException {
+        if(executerObject == null){
+            executerObject = new Executer();
+        }
+        return executerObject;
     }
     private void loadConfg(String confgFilePath) throws IOException {
         FileReader confgFile = new FileReader(confgFilePath);

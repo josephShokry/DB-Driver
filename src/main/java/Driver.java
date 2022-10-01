@@ -1,18 +1,18 @@
 import exceptions.*;
-import org.json.*;
-import java.io.*;
-import java.nio.file.Path;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Properties;
+
 
 public class Driver implements IDriver{
-    private Execute executer;
-    public Driver(Execute execute){
-        this.executer = execute;
+    private final Executer executer;
+    public Driver(final Executer executer){
+        this.executer = executer;
     }
     @Override
     public void createDatabase(String schemaPath) throws IOException, JSONException {
-        String command = Paths.get("source","main.py") + " -cmd create -sch " + schemaPath;
+        String command = String.format("%s -cmd create -sch %s",Paths.get("source","main.py").toString(), schemaPath);
         JSONObject api = executer.execute(command);
         exceptionRaiser(api);
     }
