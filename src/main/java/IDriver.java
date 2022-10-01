@@ -16,7 +16,7 @@ public interface IDriver {
      * @param jsonObject the row wanted to be set in the database
      */
 
-    void set (String databaseName, String jsonObject);
+    void set (String databaseName, String tableName, String jsonObject);
 
     /**
      * to get a row form the database
@@ -24,7 +24,7 @@ public interface IDriver {
      * @param jsonQuery the query data of required row
      * @return list of json of row that match the query
      */
-    String get (String databaseName, String jsonQuery);
+    String get (String databaseName, String tableName, String jsonQuery);
 
     /**
      *

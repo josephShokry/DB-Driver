@@ -6,30 +6,21 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 public class Driver implements IDriver{
-    private final String databasePath;
-    private final String pythonCaller;
-    public Driver() throws IOException {
-        Path confgFilePath = Paths.get(System.getProperty("user.dir"),"src", "main", "java", "configurations.properties");
-        FileReader confgFile = new FileReader(confgFilePath.toString());
-        Properties confg = new Properties();
-        confg.load(confgFile);
-        databasePath = confg.getProperty("databasePath");
-        pythonCaller = confg.getProperty("pythonCaller");
-    }
     @Override
     public void createDatabase(String schemaPath) throws IOException, JSONException {
-        String command = pythonCaller + " " + Paths.get("source","main.py") + " -cmd create -sch " + schemaPath;
+        String command = Paths.get("source","main.py") + " -cmd create -sch " + schemaPath;
         JSONObject api = new Execute().execute(command);
         exceptionRaiser(api);
     }
 
     @Override
-    public void set(String databaseName, String tableName,String jsonObject) throws IOException, JSONException {
+    public void set(String databaseName, String tableName, String jsonObject) {
 
     }
 
     @Override
-    public String get(String databaseName, String jsonQuery) {
+    public String get(String databaseName, String tableName, String jsonQuery) {
+
         return null;
     }
 
