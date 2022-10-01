@@ -16,7 +16,7 @@ class operationsTest {
         when(mockedExecute.execute(command)).thenReturn(
                 new JSONObject("{'result': 'None', 'message': 'the command has been executed successfully!', 'status': 'Success'}"));
         try{
-            new Driver().createDatabase(schemaPath);
+            new Driver(mockedExecute).createDatabase(schemaPath);
         }
         catch (Exception e){
             fail(e.getMessage());
@@ -30,7 +30,7 @@ class operationsTest {
         when(mockedExecute.execute(command)).thenReturn(
                 new JSONObject("{'result': 'None', 'message': 'the schema path is not valid', 'status': 'FileNotFound'}"));
         try{
-            new Driver().createDatabase(schemaPath);
+            new Driver(mockedExecute).createDatabase(schemaPath);
         }
         catch (Exception e){
             if(!(e instanceof FileNotFound)){

@@ -6,10 +6,14 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 public class Driver implements IDriver{
+    private Execute executer;
+    public Driver(Execute execute){
+        this.executer = execute;
+    }
     @Override
     public void createDatabase(String schemaPath) throws IOException, JSONException {
         String command = Paths.get("source","main.py") + " -cmd create -sch " + schemaPath;
-        JSONObject api = new Execute().execute(command);
+        JSONObject api = executer.execute(command);
         exceptionRaiser(api);
     }
 
