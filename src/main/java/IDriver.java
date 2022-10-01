@@ -1,6 +1,6 @@
 import org.json.JSONException;
-
 import java.io.IOException;
+
 
 public interface IDriver {
     /**
@@ -9,12 +9,14 @@ public interface IDriver {
      */
     void createDatabase (String schemaPath) throws IOException, JSONException;
 
+
     /**
      * to set a new row (element) in the database
      * @param databaseName the name of database to set in the new row
      * @param jsonObject the row wanted to be set in the database
      */
-    void set (String databaseName, String tableName,String jsonObject) throws IOException, JSONException;
+
+    void set (String databaseName, String jsonObject);
 
     /**
      * to get a row form the database
