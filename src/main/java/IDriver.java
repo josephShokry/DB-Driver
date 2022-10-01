@@ -1,16 +1,20 @@
+import org.json.JSONException;
+
+import java.io.IOException;
+
 public interface IDriver {
     /**
      * to call the FSDB to create a new database
      * @param schemaPath the schema of the database required to be created
      */
-    void createDatabase (String schemaPath);
+    void createDatabase (String schemaPath) throws IOException, JSONException;
 
     /**
      * to set a new row (element) in the database
      * @param databaseName the name of database to set in the new row
      * @param jsonObject the row wanted to be set in the database
      */
-    void set (String databaseName, String jsonObject);
+    void set (String databaseName, String tableName,String jsonObject) throws IOException, JSONException;
 
     /**
      * to get a row form the database
