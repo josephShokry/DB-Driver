@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 
-public class Driver implements IDriver{
+public class Driver implements IDriver {
     private final Executer executer;
-    public Driver(final Executer executer){
+    public Driver(final Executer executer) {
         this.executer = executer;
     }
+
     @Override
     public void createDatabase(String schemaPath) throws IOException, JSONException {
         String command = String.format("%s -cmd create -sch %s",Paths.get("source","main.py").toString(), schemaPath);

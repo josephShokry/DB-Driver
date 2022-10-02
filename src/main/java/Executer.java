@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-public class Executer {
+public final class Executer {
     private String databasePath;
     private String pythonCaller;
     private static Executer executerObject = null;
@@ -20,16 +20,16 @@ public class Executer {
         return executerObject;
     }
     private void loadConfg(String confgFilePath) throws IOException {
-        FileReader confgFile = new FileReader(confgFilePath);
-        Properties confg = new Properties();
+        final FileReader confgFile = new FileReader(confgFilePath);
+        final Properties confg = new Properties();
         confg.load(confgFile);
         databasePath = confg.getProperty("databasePath");
         pythonCaller = confg.getProperty("pythonCaller");
     }
     JSONObject execute(String command) throws IOException, JSONException {
-        File dir = new File(databasePath);
-        Process process = Runtime.getRuntime().exec(pythonCaller + " " + command,null,dir);
-        BufferedReader outputMessage = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        final File dir = new File(databasePath);
+        final Process process = Runtime.getRuntime().exec(pythonCaller + " " + command,null,dir);
+        final BufferedReader outputMessage = new BufferedReader(new InputStreamReader(process.getInputStream()));
         return new JSONObject(outputMessage.readLine());
     }
 }
