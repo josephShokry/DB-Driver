@@ -1,4 +1,7 @@
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 
@@ -16,7 +19,7 @@ public interface IDriver {
      * @param jsonObject the row wanted to be set in the database
      */
 
-    void set (String databaseName, String tableName, String jsonObject);
+    void set (String databaseName, String tableName, String jsonObject) throws JSONException, IOException;
 
     /**
      * to get a row form the database
@@ -24,13 +27,13 @@ public interface IDriver {
      * @param jsonQuery the query data of required row
      * @return list of json of row that match the query
      */
-    String get (String databaseName, String tableName, String jsonQuery);
+    JSONArray get (String databaseName, String tableName, String jsonQuery) throws JSONException, IOException;
 
     /**
      *
      * @param databaseName the name of database to delete form it the row
      * @param jsonQuery the query data of required row
      */
-    void delete (String databaseName, String jsonQuery);
+    void delete (String databaseName, String tableName, String jsonQuery) throws JSONException, IOException;
 
 }

@@ -1,4 +1,5 @@
 import exceptions.*;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
@@ -18,19 +19,26 @@ public class Driver implements IDriver{
     }
 
     @Override
-    public void set(String databaseName, String tableName, String jsonObject) {
-
+    public void set(String databaseName, String tableName, String jsonObject) throws JSONException, IOException {
+        String command = String.format("%s -cmd set -database %s -table %s -val \"%s\"",Paths.get("source","main.py").toString(), databaseName, tableName, jsonObject);
+        JSONObject api = executer.execute(command);
+        exceptionRaiser(api);
     }
 
     @Override
-    public String get(String databaseName, String tableName, String jsonQuery) {
-
-        return null;
+    public JSONArray get(String databaseName, String tableName, String jsonQuery) throws JSONException, IOException {
+        String command = String.format("%s -cmd get -database %s -table %s -q \"%s\"",Paths.get("source","main.py").toString(),databaseName ,tableName, jsonQuery.toString());
+        JSONObject api = executer.execute(command);
+        exceptionRaiser(api);
+        String result = api.getString("result").replace("{","\"{").replace("}","}\"");
+        return new JSONArray(result);
     }
 
     @Override
-    public void delete(String databaseName, String jsonQuery) {
-
+    public void delete(String databaseName, String tableName, String jsonQuery) throws JSONException, IOException {
+        String command = String.format("%s -cmd delete -database %s -table %s -q \"%s\"",Paths.get("source","main.py").toString(),databaseName, tableName, jsonQuery.toString());
+        JSONObject api = executer.execute(command);
+        exceptionRaiser(api);
     }
     private void exceptionRaiser(JSONObject api) throws JSONException {
         if (api.getString("status").equals("ColumnsNotExistInSchema"))
