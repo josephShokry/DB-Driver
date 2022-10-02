@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-public final class Executer {
+public class Executer {
     private String databasePath;
     private String pythonCaller;
     private static Executer executerObject = null;
