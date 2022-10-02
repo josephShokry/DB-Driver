@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-public class Executer {
+public final class Executer {
     private String databasePath;
     private String pythonCaller;
     private static Executer executerObject = null;
@@ -23,8 +23,9 @@ public class Executer {
         final FileReader confgFile = new FileReader(confgFilePath);
         final Properties confg = new Properties();
         confg.load(confgFile);
-        databasePath = confg.getProperty("databasePath");
-        pythonCaller = confg.getProperty("pythonCaller");
+        this.databasePath = confg.getProperty("databasePath");
+        this.pythonCaller = confg.getProperty("pythonCaller");
+        confgFile.close();
     }
     JSONObject execute(String command) throws IOException, JSONException {
         final File dir = new File(databasePath);
