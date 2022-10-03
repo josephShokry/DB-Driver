@@ -16,7 +16,8 @@ public final class Executer {
     private static Executer executerObject = null;
 
     private Executer() throws IOException {
-        Path filePath = Paths.get(Paths.get(System.getProperty("user.dir")).toString(), "src", "main", "java", "configurations.properties");
+        Path filePath = Paths.get(Paths.get(System.getProperty("user.dir")).toString(),
+                "src", "main", "java", "configurations.properties");
         Properties confg = loadConfg(filePath.toString());
         this.databasePath = confg.getProperty("databasePath");
         this.pythonCaller = confg.getProperty("pythonCaller");
@@ -44,7 +45,8 @@ public final class Executer {
 
     JSONObject execute(final String command) throws IOException, JSONException {
         final File dir = new File(this.databasePath);
-        final Process process = Runtime.getRuntime().exec(pythonCaller + " " + command, null, dir);
+        final Process process = Runtime.getRuntime().exec(
+                pythonCaller + " " + command, null, dir);
         final BufferedReader outputMessage = new BufferedReader(new InputStreamReader(process.getInputStream()));
         return new JSONObject(outputMessage.readLine());
     }

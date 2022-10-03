@@ -29,8 +29,10 @@ public class Driver implements IDriver {
      * @throws JSONException
      */
     @Override
-    public void createDatabase(final String schemaPath) throws IOException, JSONException {
-        String command = String.format("%s -cmd create -sch %s", Paths.get("source", "main.py").toString(), schemaPath);
+    public void createDatabase(final String schemaPath)
+            throws IOException, JSONException {
+        String command = String.format("%s -cmd create -sch %s",
+                Paths.get("source", "main.py").toString(), schemaPath);
         JSONObject api = executer.execute(command);
         exceptionRaiser(api);
     }
@@ -43,8 +45,13 @@ public class Driver implements IDriver {
      * @throws IOException
      */
     @Override
-    public void set(final String databaseName, final String tableName, final String jsonObject) throws JSONException, IOException {
-        String command = String.format("%s -cmd set -database %s -table %s -val \"%s\"", Paths.get("source", "main.py").toString(), databaseName, tableName, jsonObject);
+    public void set(final String databaseName,
+                    final String tableName,
+                    final String jsonObject) throws JSONException, IOException {
+        String command = String.format(
+                "%s -cmd set -database %s -table %s -val \"%s\"",
+                Paths.get("source", "main.py").toString(),
+                databaseName, tableName, jsonObject);
         JSONObject api = executer.execute(command);
         exceptionRaiser(api);
     }
@@ -58,11 +65,18 @@ public class Driver implements IDriver {
      * @throws IOException
      */
     @Override
-    public JSONArray get(final String databaseName, final String tableName, final String jsonQuery) throws JSONException, IOException {
-        String command = String.format("%s -cmd get -database %s -table %s -q \"%s\"", Paths.get("source", "main.py").toString(), databaseName, tableName, jsonQuery.toString());
+    public JSONArray get(final String databaseName,
+                         final String tableName,
+                         final String jsonQuery)
+            throws JSONException, IOException {
+        String command = String.format(
+                "%s -cmd get -database %s -table %s -q \"%s\"",
+                Paths.get("source", "main.py").toString(),
+                databaseName, tableName, jsonQuery.toString());
         JSONObject api = executer.execute(command);
         exceptionRaiser(api);
-        String result = api.getString("result").replace("{", "\"{").replace("}", "}\"");
+        String result = api.getString("result").replace(
+                "{", "\"{").replace("}", "}\"");
         return new JSONArray(result);
     }
 
@@ -74,8 +88,14 @@ public class Driver implements IDriver {
      * @throws IOException
      */
     @Override
-    public void delete(final String databaseName, final String tableName, final String jsonQuery) throws JSONException, IOException {
-        final String command = String.format("%s -cmd delete -database %s -table %s -q \"%s\"", Paths.get("source", "main.py").toString(), databaseName, tableName, jsonQuery.toString());
+    public void delete(final String databaseName,
+                       final String tableName,
+                       final String jsonQuery)
+            throws JSONException, IOException {
+        final String command = String.format(
+                "%s -cmd delete -database %s -table %s -q \"%s\"",
+                Paths.get("source", "main.py").toString(),
+                databaseName, tableName, jsonQuery.toString());
         JSONObject api = executer.execute(command);
         exceptionRaiser(api);
     }
