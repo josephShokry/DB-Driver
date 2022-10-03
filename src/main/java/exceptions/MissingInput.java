@@ -1,10 +1,13 @@
 package exceptions;
 
 /**
- * this exception will be thrown if any of the required inputs is missed
+ * this exception will be thrown if any of the required inputs is missed.
  */
 public class MissingInput extends RuntimeException {
-    MissingInput(String message) {
+    /**
+     * @param message
+     */
+    public MissingInput(final String message) {
         super(message);
     }
 }

@@ -1,6 +1,6 @@
-
 *.xml
 !pom.xml
 *.iml
 *.jar
 target*
+src/main/java/main.java
