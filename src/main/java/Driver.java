@@ -14,10 +14,13 @@ import java.nio.file.Paths;
 
 
 public class Driver implements IDriver {
+    /**
+     * singleton design pattern.
+     */
     private final Executer executer;
 
     /**
-     * @param executer
+     * @param executer the executer obj
      */
     public Driver(final Executer executer) {
         this.executer = executer;
