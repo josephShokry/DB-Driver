@@ -20,10 +20,10 @@ public class Driver implements IDriver {
     private final Executer executer;
 
     /**
-     * @param executer the executer obj
+     * @param driverExecuter the executer obj
      */
-    public Driver(final Executer executer) {
-        this.executer = executer;
+    public Driver(final Executer driverExecuter) {
+        this.executer = driverExecuter;
     }
 
     /**
