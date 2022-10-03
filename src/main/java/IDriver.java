@@ -21,7 +21,10 @@ public interface IDriver {
      * @throws IOException
      */
 
-    void set(String databaseName, String tableName, String jsonObject) throws JSONException, IOException;
+    void set(String databaseName,
+             String tableName,
+             String jsonObject)
+            throws JSONException, IOException;
 
     /**
      * @param databaseName
@@ -31,7 +34,10 @@ public interface IDriver {
      * @throws JSONException
      * @throws IOException
      */
-    JSONArray get(String databaseName, String tableName, String jsonQuery) throws JSONException, IOException;
+    JSONArray get(String databaseName,
+                  String tableName,
+                  String jsonQuery)
+            throws JSONException, IOException;
 
     /**
      * @param databaseName
@@ -40,6 +46,9 @@ public interface IDriver {
      * @throws JSONException
      * @throws IOException
      */
-    void delete(String databaseName, String tableName, String jsonQuery) throws JSONException, IOException;
+    void delete(String databaseName,
+                String tableName,
+                String jsonQuery)
+            throws JSONException, IOException;
 
 }
