@@ -4,3 +4,4 @@
 *.jar
 target*
 src/main/java/main.java
+!.github/linters/sun_checks.xml
